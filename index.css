@@ -115,3 +115,12 @@ button {
   position: relative;
   margin: auto;
 }
+
+.steps {
+  width: 200px;
+  height: 100px;
+  font-size: 20px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}

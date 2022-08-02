@@ -23,6 +23,14 @@ function victory() {
     location.reload();
   });
 }
+function stepsCount(count) {
+  let st = document.createElement('div');
+  st.innerText = count;
+  let step = document.querySelector('.steps');
+  step.removeChild(step.lastChild);
+  step.appendChild(st);
+
+}
 
 let count = 0;
 let position = 0;
@@ -33,6 +41,11 @@ climber0.src = "./img/climber.png";
 climber0.className = "climber";
 climber0.alt = '';
 points[0].appendChild(climber0);
+
+let s = document.querySelector('.steps');
+let text = document.createElement('div');
+text.innerText = "0";
+s.appendChild(text);
 
 document.addEventListener('keydown', function(event) {
   if (event.code == 'KeyZ') {
@@ -45,8 +58,8 @@ document.addEventListener('keydown', function(event) {
       points[position].appendChild(climber);
       let oldElem = points[position+1];
       oldElem.removeChild(oldElem.firstChild);
+      stepsCount(++count);
     }
-    count += 1;
   } else if (event.code == 'KeyX') {
     if (position < 5 && win == 0) {
       let oldElem = points[position];
@@ -57,8 +70,9 @@ document.addEventListener('keydown', function(event) {
       climber.className = "climber";
       climber.alt = '';
       points[position].appendChild(climber);
-      
+      stepsCount(++count);
     } else if (position == 5 && win == 0) {
+      stepsCount(++count);
       let oldElem = points[position];
       oldElem.removeChild(oldElem.firstChild);
       position += 1;
@@ -76,6 +90,5 @@ document.addEventListener('keydown', function(event) {
       flag.className = "flag_trans";
       victory();
     }
-    count += 1;
   }
 });
